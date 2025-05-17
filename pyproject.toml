@@ -1,0 +1,46 @@
+[tool.ruff]
+# Line length configuration
+line-length = 100
+
+# Enable specific rules and rule sets
+lint.select = [
+    "E",    # pycodestyle errors
+    "F",    # pyflakes
+    "I",    # isort
+    "N",    # pep8-naming
+    "B",    # flake8-bugbear
+    "W",    # pycodestyle warnings
+    "C4",   # flake8-comprehensions
+    "UP",   # pyupgrade
+]
+
+# Ignore specific rules
+lint.ignore = [
+    "E203",  # Whitespace before colon (black compatibility)
+    "E501",  # Line too long (handled by formatter)
+]
+
+# Target Python version
+target-version = "py38"
+
+# Configure indentation to 4 spaces
+indent-width = 4
+
+# Use a safe subset of ruff features that won't break code
+fix = true
+unsafe-fixes = false
+
+[tool.ruff.lint.isort]
+known-first-party = ["neural_audio_modulation"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+skip-magic-trailing-comma = false
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10

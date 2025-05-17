@@ -1,0 +1,54 @@
+model:
+  name: "AudioCompressionModel"
+  encoder:
+    layers:
+      - type: "Conv1d"
+        filters: 64
+        kernel_size: 3
+        stride: 1
+        padding: "same"
+      - type: "ReLU"
+      - type: "MaxPool1d"
+        kernel_size: 2
+        stride: 2
+      - type: "Conv1d"
+        filters: 128
+        kernel_size: 3
+        stride: 1
+        padding: "same"
+      - type: "ReLU"
+      - type: "MaxPool1d"
+        kernel_size: 2
+        stride: 2
+  decoder:
+    layers:
+      - type: "ConvTranspose1d"
+        filters: 64
+        kernel_size: 2
+        stride: 2
+      - type: "ReLU"
+      - type: "ConvTranspose1d"
+        filters: 1
+        kernel_size: 2
+        stride: 2
+  modulation:
+    techniques:
+      - type: "AM"
+      - type: "FM"
+
+training:
+  batch_size: 32
+  learning_rate: 0.001
+  num_epochs: 100
+  optimizer: "Adam"
+  loss_function: "MSELoss"
+
+data:
+  dataset_path: "/path/to/dataset"
+  sample_rate: 22050
+  normalization: true
+  augmentation:
+    enabled: true
+    techniques:
+      - "time_stretch"
+      - "pitch_shift"
