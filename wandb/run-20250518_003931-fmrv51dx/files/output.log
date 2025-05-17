@@ -1,0 +1,72 @@
+Input dimension changed from 64 to 101 due to positional encoding.
+encoder_dims: [64, 32, 16, 8], decoder_dims: [8, 16, 32, 64]
+Epoch 1: 0it [00:00, ?it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 102, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 58, in train_model
+    for idx, batch in tqdm(enumerate(train_loader), desc=f"Epoch {epoch + 1}"):
+  File "/home/amarjay/.local/lib/python3.10/site-packages/tqdm/std.py", line 1181, in __iter__
+    for obj in iterable:
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 733, in __next__
+    data = self._next_data()
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 789, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/data/dataset.py", line 21, in __getitem__
+    waveform = self.transform(waveform)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/data/preprocessing.py", line 62, in func
+    data = (data - np.min(data)) / (np.max(data) - np.min(data))
+  File "/home/amarjay/.local/lib/python3.10/site-packages/numpy/core/fromnumeric.py", line 2953, in min
+    return _wrapreduction(a, np.minimum, 'min', axis, None, out,
+  File "/home/amarjay/.local/lib/python3.10/site-packages/numpy/core/fromnumeric.py", line 86, in _wrapreduction
+    return reduction(axis=axis, out=out, **passkwargs)
+TypeError: min() received an invalid combination of arguments - got (out=NoneType, axis=NoneType, ), but expected one of:
+ * ()
+ * (Tensor other)
+ * (int dim, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+ * (name dim, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 102, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 58, in train_model
+    for idx, batch in tqdm(enumerate(train_loader), desc=f"Epoch {epoch + 1}"):
+  File "/home/amarjay/.local/lib/python3.10/site-packages/tqdm/std.py", line 1181, in __iter__
+    for obj in iterable:
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 733, in __next__
+    data = self._next_data()
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 789, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/data/dataset.py", line 21, in __getitem__
+    waveform = self.transform(waveform)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/data/preprocessing.py", line 62, in func
+    data = (data - np.min(data)) / (np.max(data) - np.min(data))
+  File "/home/amarjay/.local/lib/python3.10/site-packages/numpy/core/fromnumeric.py", line 2953, in min
+    return _wrapreduction(a, np.minimum, 'min', axis, None, out,
+  File "/home/amarjay/.local/lib/python3.10/site-packages/numpy/core/fromnumeric.py", line 86, in _wrapreduction
+    return reduction(axis=axis, out=out, **passkwargs)
+TypeError: min() received an invalid combination of arguments - got (out=NoneType, axis=NoneType, ), but expected one of:
+ * ()
+ * (Tensor other)
+ * (int dim, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+ * (name dim, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis

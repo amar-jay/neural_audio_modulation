@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 92, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 36, in train_model
+    model = NeuralAudioEncoding(
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/models/model.py", line 122, in __init__
+    self.encoder_layers.append(nn.Linear(encoder_dims[i], encoder_dims[i+1]))
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 92, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 36, in train_model
+    model = NeuralAudioEncoding(
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/models/model.py", line 122, in __init__
+    self.encoder_layers.append(nn.Linear(encoder_dims[i], encoder_dims[i+1]))
+IndexError: list index out of range

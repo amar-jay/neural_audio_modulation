@@ -1,0 +1,10 @@
+Input dimension changed from 64 to 101 due to positional encoding.
+encoder_dims: [64, 32, 16, 8], decoder_dims: [8, 16, 32, 64]
+Epoch 1: 250it [01:09,  3.61it/s]
+Cross Entropy Loss: -0.0
+Cross Entropy Loss: -0.0
+Cross Entropy Loss: -0.0
+Cross Entropy Loss: -0.0
+Cross Entropy Loss: -0.0
+Epoch 2: 61it [00:18,  3.01it/s]
+Cross Entropy Loss: -0.0

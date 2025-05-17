@@ -1,0 +1,15 @@
+{"time":"2025-05-18T00:18:48.0013377+03:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/wandb/run-20250518_001847-iua1zelt/logs/debug-core.log"}
+{"time":"2025-05-18T00:18:48.405304925+03:00","level":"INFO","msg":"created new stream","id":"iua1zelt"}
+{"time":"2025-05-18T00:18:48.405343862+03:00","level":"INFO","msg":"stream: started","id":"iua1zelt"}
+{"time":"2025-05-18T00:18:48.405362274+03:00","level":"INFO","msg":"sender: started","stream_id":"iua1zelt"}
+{"time":"2025-05-18T00:18:48.405362272+03:00","level":"INFO","msg":"handler: started","stream_id":"iua1zelt"}
+{"time":"2025-05-18T00:18:48.40541334+03:00","level":"INFO","msg":"writer: Do: started","stream_id":"iua1zelt"}
+{"time":"2025-05-18T00:18:48.919794911+03:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-05-18T00:18:50.376099599+03:00","level":"INFO","msg":"stream: closing","id":"iua1zelt"}
+{"time":"2025-05-18T00:18:50.376126395+03:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-05-18T00:18:50.376181296+03:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-05-18T00:18:51.230699731+03:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-05-18T00:18:51.576083619+03:00","level":"INFO","msg":"handler: closed","stream_id":"iua1zelt"}
+{"time":"2025-05-18T00:18:51.576151926+03:00","level":"INFO","msg":"sender: closed","stream_id":"iua1zelt"}
+{"time":"2025-05-18T00:18:51.576140202+03:00","level":"INFO","msg":"writer: Close: closed","stream_id":"iua1zelt"}
+{"time":"2025-05-18T00:18:51.576223808+03:00","level":"INFO","msg":"stream: closed","id":"iua1zelt"}

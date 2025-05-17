@@ -1,0 +1,52 @@
+Input dimension changed from 64 to 11 due to positional encoding.
+encoder_dims: [64, 32, 16, 8], decoder_dims: [8, 16, 32, 64]
+Epoch 1: 0it [00:00, ?it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 100, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 80, in train_model
+    evaluate_model(audio_input, audio_output, cross_entropy_loss=loss)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 88, in evaluate_model
+    metrics = calculate_metrics(audio_input, audio_output)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 51, in calculate_metrics
+    snr = signal_to_noise_ratio(original, compressed)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 13, in signal_to_noise_ratio
+    snr = 10 * np.log10(np.sum(original**2) / np.sum(noise**2))
+  File "/home/amarjay/.local/lib/python3.10/site-packages/numpy/core/fromnumeric.py", line 2313, in sum
+    return _wrapreduction(a, np.add, 'sum', axis, dtype, out, keepdims=keepdims,
+  File "/home/amarjay/.local/lib/python3.10/site-packages/numpy/core/fromnumeric.py", line 86, in _wrapreduction
+    return reduction(axis=axis, out=out, **passkwargs)
+TypeError: sum() received an invalid combination of arguments - got (out=NoneType, axis=NoneType, ), but expected one of:
+ * (*, torch.dtype dtype = None)
+      didn't match because some of the keywords were incorrect: out, axis
+ * (tuple of ints dim, bool keepdim = False, *, torch.dtype dtype = None)
+ * (tuple of names dim, bool keepdim = False, *, torch.dtype dtype = None)
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 100, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 80, in train_model
+    evaluate_model(audio_input, audio_output, cross_entropy_loss=loss)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 88, in evaluate_model
+    metrics = calculate_metrics(audio_input, audio_output)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 51, in calculate_metrics
+    snr = signal_to_noise_ratio(original, compressed)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 13, in signal_to_noise_ratio
+    snr = 10 * np.log10(np.sum(original**2) / np.sum(noise**2))
+  File "/home/amarjay/.local/lib/python3.10/site-packages/numpy/core/fromnumeric.py", line 2313, in sum
+    return _wrapreduction(a, np.add, 'sum', axis, dtype, out, keepdims=keepdims,
+  File "/home/amarjay/.local/lib/python3.10/site-packages/numpy/core/fromnumeric.py", line 86, in _wrapreduction
+    return reduction(axis=axis, out=out, **passkwargs)
+TypeError: sum() received an invalid combination of arguments - got (out=NoneType, axis=NoneType, ), but expected one of:
+ * (*, torch.dtype dtype = None)
+      didn't match because some of the keywords were incorrect: out, axis
+ * (tuple of ints dim, bool keepdim = False, *, torch.dtype dtype = None)
+ * (tuple of names dim, bool keepdim = False, *, torch.dtype dtype = None)

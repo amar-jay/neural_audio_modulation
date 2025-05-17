@@ -1,0 +1,46 @@
+Input dimension changed from 64 to 11 due to positional encoding.
+encoder_dims: [64, 32, 16, 8], decoder_dims: [8, 16, 32, 64]
+Epoch 1: 0it [00:00, ?it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 100, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 80, in train_model
+    evaluate_model(audio_input.cpu(), audio_output.cpu(), cross_entropy_loss=loss)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 88, in evaluate_model
+    metrics = calculate_metrics(audio_input, audio_output)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 72, in calculate_metrics
+    pd = perceptual_difference(original, compressed)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 63, in perceptual_difference
+    return np.mean(np.abs(original - compressed))
+  File "/home/amarjay/.local/lib/python3.10/site-packages/numpy/core/fromnumeric.py", line 3502, in mean
+    return mean(axis=axis, dtype=dtype, out=out, **kwargs)
+TypeError: mean() received an invalid combination of arguments - got (dtype=NoneType, out=NoneType, axis=NoneType, ), but expected one of:
+ * (*, torch.dtype dtype = None)
+ * (tuple of ints dim, bool keepdim = False, *, torch.dtype dtype = None)
+ * (tuple of names dim, bool keepdim = False, *, torch.dtype dtype = None)
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 100, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 80, in train_model
+    evaluate_model(audio_input.cpu(), audio_output.cpu(), cross_entropy_loss=loss)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 88, in evaluate_model
+    metrics = calculate_metrics(audio_input, audio_output)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 72, in calculate_metrics
+    pd = perceptual_difference(original, compressed)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 63, in perceptual_difference
+    return np.mean(np.abs(original - compressed))
+  File "/home/amarjay/.local/lib/python3.10/site-packages/numpy/core/fromnumeric.py", line 3502, in mean
+    return mean(axis=axis, dtype=dtype, out=out, **kwargs)
+TypeError: mean() received an invalid combination of arguments - got (dtype=NoneType, out=NoneType, axis=NoneType, ), but expected one of:
+ * (*, torch.dtype dtype = None)
+ * (tuple of ints dim, bool keepdim = False, *, torch.dtype dtype = None)
+ * (tuple of names dim, bool keepdim = False, *, torch.dtype dtype = None)

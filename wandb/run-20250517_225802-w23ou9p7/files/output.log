@@ -1,0 +1,52 @@
+Input dimension changed from 128 to 21 due to positional encoding.
+encoder_dims: [128, 64, 32, 16], decoder_dims: [16, 32, 64, 128]
+/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py:56: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  audio_input = torch.tensor(batch[0], device="cuda")
+orig_shape: torch.Size([8, 1, 220500, 1]), out shape: 21, embedded shape: torch.Size([1764000, 21])
+embedded shape after reshape: torch.Size([8, 1, 220500, 21])
+encoder_outputs[skip_idx].shape: torch.Size([8, 1, 220500, 16]) x.shape: torch.Size([8, 1, 220500, 16])
+encoder_outputs[skip_idx].shape: torch.Size([8, 1, 220500, 32]) x.shape: torch.Size([8, 1, 220500, 32])
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 92, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 61, in train_model
+    audio_output = model(audio_input)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/models/model.py", line 165, in forward
+    x = layer(x)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 432.00 MiB. GPU 0 has a total capacity of 3.80 GiB of which 187.69 MiB is free. Including non-PyTorch memory, this process has 3.12 GiB memory in use. Of the allocated memory 2.99 GiB is allocated by PyTorch, and 38.75 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 92, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 61, in train_model
+    audio_output = model(audio_input)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/models/model.py", line 165, in forward
+    x = layer(x)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 432.00 MiB. GPU 0 has a total capacity of 3.80 GiB of which 187.69 MiB is free. Including non-PyTorch memory, this process has 3.12 GiB memory in use. Of the allocated memory 2.99 GiB is allocated by PyTorch, and 38.75 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

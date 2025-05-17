@@ -1,0 +1,15 @@
+{"time":"2025-05-17T22:56:57.880699564+03:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/wandb/run-20250517_225657-rurq51g3/logs/debug-core.log"}
+{"time":"2025-05-17T22:56:58.277978739+03:00","level":"INFO","msg":"created new stream","id":"rurq51g3"}
+{"time":"2025-05-17T22:56:58.278081845+03:00","level":"INFO","msg":"stream: started","id":"rurq51g3"}
+{"time":"2025-05-17T22:56:58.278110179+03:00","level":"INFO","msg":"writer: Do: started","stream_id":"rurq51g3"}
+{"time":"2025-05-17T22:56:58.278173234+03:00","level":"INFO","msg":"sender: started","stream_id":"rurq51g3"}
+{"time":"2025-05-17T22:56:58.278271626+03:00","level":"INFO","msg":"handler: started","stream_id":"rurq51g3"}
+{"time":"2025-05-17T22:56:58.55884111+03:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-05-17T22:56:59.950787631+03:00","level":"INFO","msg":"stream: closing","id":"rurq51g3"}
+{"time":"2025-05-17T22:56:59.950842285+03:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-05-17T22:56:59.950912927+03:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-05-17T22:57:00.834721637+03:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-05-17T22:57:01.14466278+03:00","level":"INFO","msg":"handler: closed","stream_id":"rurq51g3"}
+{"time":"2025-05-17T22:57:01.144705936+03:00","level":"INFO","msg":"sender: closed","stream_id":"rurq51g3"}
+{"time":"2025-05-17T22:57:01.144698023+03:00","level":"INFO","msg":"writer: Close: closed","stream_id":"rurq51g3"}
+{"time":"2025-05-17T22:57:01.144751409+03:00","level":"INFO","msg":"stream: closed","id":"rurq51g3"}

@@ -1,0 +1,45 @@
+Input dimension changed from 32 to 11 due to positional encoding.
+encoder_dims: [32, 16, 8, 4], decoder_dims: [4, 8, 16, 32]
+Epoch 1: 0it [00:00, ?it/s]/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py:88: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+
+
+orig_shape: torch.Size([8, 1, 220500, 1]), out shape: 11, embedded shape: torch.Size([1764000, 11])
+embedded shape after reshape: torch.Size([8, 1, 220500, 11])
+  audio_input = torch.tensor(batch[0], device=device)
+
+
+orig_shape: torch.Size([8, 1, 220500, 1]), out shape: 11, embedded shape: torch.Size([1764000, 11])
+embedded shape after reshape: torch.Size([8, 1, 220500, 11])
+Epoch 1: 0it [00:00, ?it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 105, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 80, in train_model
+    evaluate_model(model.encoded, model.decoded, train_loader, cross_entropy_loss=loss)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 93, in evaluate_model
+    metrics = calculate_metrics(audio_input, decoded)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 51, in calculate_metrics
+    snr = signal_to_noise_ratio(original, compressed)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 12, in signal_to_noise_ratio
+    noise = original - compressed
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 11591.97 GiB. GPU 0 has a total capacity of 3.80 GiB of which 3.25 GiB is free. Including non-PyTorch memory, this process has 220.00 MiB memory in use. Of the allocated memory 77.92 MiB is allocated by PyTorch, and 46.08 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 105, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 80, in train_model
+    evaluate_model(model.encoded, model.decoded, train_loader, cross_entropy_loss=loss)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 93, in evaluate_model
+    metrics = calculate_metrics(audio_input, decoded)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 51, in calculate_metrics
+    snr = signal_to_noise_ratio(original, compressed)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 12, in signal_to_noise_ratio
+    noise = original - compressed
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 11591.97 GiB. GPU 0 has a total capacity of 3.80 GiB of which 3.25 GiB is free. Including non-PyTorch memory, this process has 220.00 MiB memory in use. Of the allocated memory 77.92 MiB is allocated by PyTorch, and 46.08 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

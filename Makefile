@@ -6,3 +6,6 @@ play_random:
 
 lint:
 	@ruff format src
+
+train:
+	@python -m src.training.train

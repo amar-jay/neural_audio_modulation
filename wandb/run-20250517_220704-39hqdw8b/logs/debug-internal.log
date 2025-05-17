@@ -1,0 +1,15 @@
+{"time":"2025-05-17T22:07:04.364589637+03:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/wandb/run-20250517_220704-39hqdw8b/logs/debug-core.log"}
+{"time":"2025-05-17T22:07:04.76694066+03:00","level":"INFO","msg":"created new stream","id":"39hqdw8b"}
+{"time":"2025-05-17T22:07:04.766978176+03:00","level":"INFO","msg":"stream: started","id":"39hqdw8b"}
+{"time":"2025-05-17T22:07:04.766999056+03:00","level":"INFO","msg":"sender: started","stream_id":"39hqdw8b"}
+{"time":"2025-05-17T22:07:04.76701057+03:00","level":"INFO","msg":"writer: Do: started","stream_id":"39hqdw8b"}
+{"time":"2025-05-17T22:07:04.767005726+03:00","level":"INFO","msg":"handler: started","stream_id":"39hqdw8b"}
+{"time":"2025-05-17T22:07:05.011166133+03:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-05-17T22:07:06.465237316+03:00","level":"INFO","msg":"stream: closing","id":"39hqdw8b"}
+{"time":"2025-05-17T22:07:06.4652636+03:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-05-17T22:07:06.46536137+03:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-05-17T22:07:07.32038549+03:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-05-17T22:07:07.634037699+03:00","level":"INFO","msg":"handler: closed","stream_id":"39hqdw8b"}
+{"time":"2025-05-17T22:07:07.634066639+03:00","level":"INFO","msg":"writer: Close: closed","stream_id":"39hqdw8b"}
+{"time":"2025-05-17T22:07:07.63411295+03:00","level":"INFO","msg":"sender: closed","stream_id":"39hqdw8b"}
+{"time":"2025-05-17T22:07:07.634147301+03:00","level":"INFO","msg":"stream: closed","id":"39hqdw8b"}

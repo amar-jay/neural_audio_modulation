@@ -1,4 +1,6 @@
+import os
 import numpy as np
+import torch
 import sounddevice as sd
 
 
@@ -20,3 +22,15 @@ def play_audio(waveform, sample_rate):
 
     sd.play(waveform_np, sample_rate)
     sd.wait()
+
+
+# save model, sequentially
+def save_model(model):
+    model_dir = "trained_models"
+    os.makedirs(model_dir, exist_ok=True)
+    model_path = os.path.join(model_dir, "neural_audio_encoding.pth")
+    if os.path.exists(model_path):
+        os.remove(model_path)
+    torch.save(model.state_dict(), model_path)
+    print(f"Model saved to {model_path}")
+    return model_path

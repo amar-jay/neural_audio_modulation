@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 77, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 21, in train_model
+    train_dataset.transform = transform_audio(
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/data/preprocessing.py", line 60, in transform_audio
+    data = torch.nn.functional.softmax(data, dim=0)
+UnboundLocalError: local variable 'data' referenced before assignment
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 77, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 21, in train_model
+    train_dataset.transform = transform_audio(
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/data/preprocessing.py", line 60, in transform_audio
+    data = torch.nn.functional.softmax(data, dim=0)
+UnboundLocalError: local variable 'data' referenced before assignment

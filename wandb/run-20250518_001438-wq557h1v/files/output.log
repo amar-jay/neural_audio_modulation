@@ -1,0 +1,55 @@
+Input dimension changed from 64 to 11 due to positional encoding.
+encoder_dims: [64, 32, 16, 8], decoder_dims: [8, 16, 32, 64]
+Epoch 1: 0it [00:00, ?it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 100, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 80, in train_model
+    evaluate_model(audio_input.cpu(), audio_output.cpu(), cross_entropy_loss=loss)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 88, in evaluate_model
+    metrics = calculate_metrics(audio_input, audio_output)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 54, in calculate_metrics
+    mse = mean_squared_error_metric(original, compressed)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 23, in mean_squared_error_metric
+    return mean_squared_error(original, compressed)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/sklearn/utils/_param_validation.py", line 216, in wrapper
+    return func(*args, **kwargs)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/sklearn/metrics/_regression.py", line 565, in mean_squared_error
+    _check_reg_targets_with_floating_dtype(
+  File "/home/amarjay/.local/lib/python3.10/site-packages/sklearn/metrics/_regression.py", line 198, in _check_reg_targets_with_floating_dtype
+    y_type, y_true, y_pred, multioutput = _check_reg_targets(
+  File "/home/amarjay/.local/lib/python3.10/site-packages/sklearn/metrics/_regression.py", line 105, in _check_reg_targets
+    y_true = check_array(y_true, ensure_2d=False, dtype=dtype)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/sklearn/utils/validation.py", line 1101, in check_array
+    raise ValueError(
+ValueError: Found array with dim 3. None expected <= 2.
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 100, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 80, in train_model
+    evaluate_model(audio_input.cpu(), audio_output.cpu(), cross_entropy_loss=loss)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 88, in evaluate_model
+    metrics = calculate_metrics(audio_input, audio_output)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 54, in calculate_metrics
+    mse = mean_squared_error_metric(original, compressed)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 23, in mean_squared_error_metric
+    return mean_squared_error(original, compressed)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/sklearn/utils/_param_validation.py", line 216, in wrapper
+    return func(*args, **kwargs)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/sklearn/metrics/_regression.py", line 565, in mean_squared_error
+    _check_reg_targets_with_floating_dtype(
+  File "/home/amarjay/.local/lib/python3.10/site-packages/sklearn/metrics/_regression.py", line 198, in _check_reg_targets_with_floating_dtype
+    y_type, y_true, y_pred, multioutput = _check_reg_targets(
+  File "/home/amarjay/.local/lib/python3.10/site-packages/sklearn/metrics/_regression.py", line 105, in _check_reg_targets
+    y_true = check_array(y_true, ensure_2d=False, dtype=dtype)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/sklearn/utils/validation.py", line 1101, in check_array
+    raise ValueError(
+ValueError: Found array with dim 3. None expected <= 2.

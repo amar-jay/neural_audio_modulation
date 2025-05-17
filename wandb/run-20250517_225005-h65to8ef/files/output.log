@@ -1,0 +1,50 @@
+encoder_dims: [21, 10, 5, 2], decoder_dims: [2, 5, 10, 21]
+/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py:56: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  audio_input = torch.tensor(batch[0], device="cuda")
+orig_shape: torch.Size([8, 1, 220500, 1]), out shape: 21, embedded shape: torch.Size([1764000, 21])
+embedded shape after reshape: torch.Size([8, 1, 220500, 21])
+encoder_outputs[skip_idx].shape: torch.Size([8, 1, 220500, 2]) x.shape: torch.Size([8, 1, 220500, 2])
+encoder_outputs[skip_idx].shape: torch.Size([8, 1, 220500, 5]) x.shape: torch.Size([8, 1, 220500, 5])
+encoder_outputs[skip_idx].shape: torch.Size([8, 1, 220500, 10]) x.shape: torch.Size([8, 1, 220500, 10])
+/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/loss.py:610: UserWarning: Using a target size (torch.Size([8, 1, 220500])) that is different to the input size (torch.Size([8, 1, 220500, 21])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 92, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 64, in train_model
+    loss = criterion(audio_output, audio_input)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/loss.py", line 610, in forward
+    return F.mse_loss(input, target, reduction=self.reduction)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/functional.py", line 3884, in mse_loss
+    expanded_input, expanded_target = torch.broadcast_tensors(input, target)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/functional.py", line 77, in broadcast_tensors
+    return _VF.broadcast_tensors(tensors)  # type: ignore[attr-defined]
+RuntimeError: The size of tensor a (21) must match the size of tensor b (220500) at non-singleton dimension 3
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 92, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 64, in train_model
+    loss = criterion(audio_output, audio_input)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/loss.py", line 610, in forward
+    return F.mse_loss(input, target, reduction=self.reduction)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/functional.py", line 3884, in mse_loss
+    expanded_input, expanded_target = torch.broadcast_tensors(input, target)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/functional.py", line 77, in broadcast_tensors
+    return _VF.broadcast_tensors(tensors)  # type: ignore[attr-defined]
+RuntimeError: The size of tensor a (21) must match the size of tensor b (220500) at non-singleton dimension 3

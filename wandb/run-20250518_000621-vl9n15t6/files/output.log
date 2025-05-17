@@ -1,0 +1,35 @@
+Input dimension changed from 64 to 11 due to positional encoding.
+encoder_dims: [64, 32, 16, 8], decoder_dims: [8, 16, 32, 64]
+Epoch 1: 0it [00:00, ?it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 102, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 80, in train_model
+    evaluate_model(model.encoded, model.decoded, audio_input, cross_entropy_loss=loss)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 90, in evaluate_model
+    metrics = calculate_metrics(audio_input, decoded)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 51, in calculate_metrics
+    snr = signal_to_noise_ratio(original, compressed)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 12, in signal_to_noise_ratio
+    noise = original - compressed
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 11591.97 GiB. GPU 0 has a total capacity of 3.80 GiB of which 3.29 GiB is free. Including non-PyTorch memory, this process has 206.00 MiB memory in use. Of the allocated memory 97.28 MiB is allocated by PyTorch, and 12.72 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 102, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 80, in train_model
+    evaluate_model(model.encoded, model.decoded, audio_input, cross_entropy_loss=loss)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 90, in evaluate_model
+    metrics = calculate_metrics(audio_input, decoded)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 51, in calculate_metrics
+    snr = signal_to_noise_ratio(original, compressed)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/utils/metrics.py", line 12, in signal_to_noise_ratio
+    noise = original - compressed
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 11591.97 GiB. GPU 0 has a total capacity of 3.80 GiB of which 3.29 GiB is free. Including non-PyTorch memory, this process has 206.00 MiB memory in use. Of the allocated memory 97.28 MiB is allocated by PyTorch, and 12.72 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
