@@ -9,3 +9,6 @@ lint:
 
 train:
 	@python -m src.training.train
+
+test:
+	@python -m src.training.test --model_path=trained_models/neural_audio_encoding.pth --file=data/esc50/audio/1-977-A-39.wav --play

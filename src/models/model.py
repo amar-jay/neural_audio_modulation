@@ -5,6 +5,7 @@ import torch
 import torch.nn as nn
 from .encoding import PositionalEncoder
 from .quantization import VectorQuantizer
+import torch.nn.functional as F
 
 
 class NeuralAudioEncoding(nn.Module):
@@ -59,6 +60,12 @@ class NeuralAudioEncoding(nn.Module):
             [nn.Linear(decoder_dims[i], decoder_dims[i + 1]) for i in range(num_layers)]
         )
 
+        # layer normalizations
+        self.layer_norms = nn.ModuleList(
+            [nn.LayerNorm(encoder_dims[i+1]) for i in range(num_layers)] +
+            [nn.LayerNorm(decoder_dims[i+1]) for i in range(num_layers)]
+        )
+
         self.proj_out = nn.Linear(decoder_dims[-1], 1)
 
         # Vector quantization bottleneck
@@ -68,7 +75,7 @@ class NeuralAudioEncoding(nn.Module):
 
         self.activation = nn.ReLU()
 
-    def forward(self, x: torch.Tensor, targets=None) -> torch.Tensor:
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
         """Forward pass with skip connections and optional positional encoding."""
         # Apply positional encoding if enabled
         if self.use_positional_encoding:
@@ -80,15 +87,18 @@ class NeuralAudioEncoding(nn.Module):
         encoder_outputs = []
 
         # Encoder forward pass
-        for layer in self.encoder_layers:
+        for i, layer in enumerate(self.encoder_layers):
             x = layer(x)
             encoder_outputs.append(x)
+            x = self.layer_norms[i](x)
             x = self.activation(x)
+            x = F.dropout(x, p=0.5, training=True)  # randomly zero out 50% of activations
 
         z_e = x
         # Apply the vector quantization bottleneck
         embedding_loss, x, perplexity, _, _ = self.bottleneck(x)
 
+        n = len(self.encoder_layers)
         # Decoder forward pass with skip connections
         for i, layer in enumerate(self.decoder_layers):
             # Add skip connection - connect with corresponding encoder output
@@ -96,12 +106,22 @@ class NeuralAudioEncoding(nn.Module):
             x = x + encoder_outputs[skip_idx]  # Skip connection
             x = layer(x)
             if i < self.num_layers - 1:  # No activation after final layer
+                x = self.layer_norms[n+i](x)
                 x = self.activation(x)
+                x = F.dropout(x, p=0.5, training=True)  # randomly zero out 50% of activations
 
         if hasattr(self, "proj_out"):
             x = self.proj_out(x)
         # remove the last dimension
         return x.squeeze(-1), embedding_loss, perplexity, z_e
+
+    def storage_size(self) -> int:
+        """Calculate the storage size of the model in MB"""
+        # Calculate the number of parameters in the model
+        num_params = sum(p.numel() for p in self.parameters() if p.requires_grad)
+        # Convert to MB
+        storage_size_mb = num_params * 4 / (1024 ** 2)
+        return storage_size_mb
 
     def loss(self, x, x_hat, embedding_loss) -> torch.Tensor:
         x_train_var = torch.var(x, dim=0, unbiased=False).mean()
@@ -115,27 +135,35 @@ class NeuralAudioEncoding(nn.Module):
 
         if hasattr(self, "proj_input"):
             x = self.proj_input(x)
-        for layer in self.encoder_layers:
+        for i, layer in enumerate(self.encoder_layers):
             x = layer(x)
+            x = self.layer_norms[i](x)
             x = self.activation(x)
+            x = F.dropout(x, p=0.5, training=True)  # randomly zero out 50% of activations
 
         return x
 
     def decoded(self, x: torch.Tensor, encoder_outputs=None) -> torch.Tensor:
         if encoder_outputs is None:
             # Without skip connections
+            n = len(self.decoder_layers)
             for i, layer in enumerate(self.decoder_layers):
                 x = layer(x)
                 if i < self.num_layers - 1:
+                    x = self.layer_norms[n+i](x)
                     x = self.activation(x)
+                    x = F.dropout(x, p=0.5, training=True)  # randomly zero out 50% of activations
         else:
+            n = len(self.encoder_outputs)
             # With provided skip connections
             for i, layer in enumerate(self.decoder_layers):
                 skip_idx = self.num_layers - 1 - i
                 x = torch.cat([x, encoder_outputs[skip_idx]], dim=-1)
                 x = layer(x)
                 if i < self.num_layers - 1:
+                    x = self.layer_norms[n+i](x)
                     x = self.activation(x)
+                    x = F.dropout(x, p=0.5, training=True)  # randomly zero out 50% of activations
         if hasattr(self, "proj_out"):
             x = self.proj_out(x)
 

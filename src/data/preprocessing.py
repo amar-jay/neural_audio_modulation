@@ -4,10 +4,7 @@ import librosa
 import torch
 
 
-def load_audio(file_path):
-    """Load an audio file."""
-    sample_rate, data = wavfile.read(file_path)
-    return sample_rate, data
+
 
 
 def normalize_audio(data):

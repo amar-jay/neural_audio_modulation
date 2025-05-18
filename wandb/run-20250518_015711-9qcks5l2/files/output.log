@@ -1,0 +1,13 @@
+Input dimension changed from 8 to 101 due to positional encoding.
+encoder_dims: [8, 4, 2], decoder_dims: [2, 4, 8]
+Vector quantization bottleneck dimension: 2
+Epoch 1: 250it [00:27,  9.21it/s]
+Epoch 2: 250it [00:26,  9.36it/s]
+Epoch 3: 250it [00:25,  9.68it/s]
+Epoch 4: 250it [00:25,  9.73it/s]
+Epoch 5: 250it [00:25,  9.78it/s]
+Epoch 6: 250it [00:25,  9.66it/s]
+Epoch 7: 250it [00:30,  8.27it/s]
+Epoch 8: 250it [00:29,  8.34it/s]
+Epoch 9: 250it [00:26,  9.27it/s]
+Epoch 10: 250it [00:26,  9.47it/s]

@@ -1,0 +1,16 @@
+{"time":"2025-05-18T14:52:59.101956282+03:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/wandb/run-20250518_145259-pnllv11j/logs/debug-core.log"}
+{"time":"2025-05-18T14:52:59.44433284+03:00","level":"INFO","msg":"created new stream","id":"pnllv11j"}
+{"time":"2025-05-18T14:52:59.44436694+03:00","level":"INFO","msg":"stream: started","id":"pnllv11j"}
+{"time":"2025-05-18T14:52:59.444409102+03:00","level":"INFO","msg":"writer: Do: started","stream_id":"pnllv11j"}
+{"time":"2025-05-18T14:52:59.444502315+03:00","level":"INFO","msg":"handler: started","stream_id":"pnllv11j"}
+{"time":"2025-05-18T14:52:59.444515008+03:00","level":"INFO","msg":"sender: started","stream_id":"pnllv11j"}
+{"time":"2025-05-18T14:52:59.75525077+03:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-05-18T15:14:00.65009899+03:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-05-18T15:14:00.65015371+03:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-05-18T15:14:01.616811707+03:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.378860021,"progress":"517B/517B"},{"desc":"uploading wandb-summary.json","runtime_seconds":0.378831443,"progress":"301B/301B"},{"desc":"uploading config.yaml","runtime_seconds":0.162220774,"progress":"1.0KB/1.0KB"}],"total_operations":3}}
+{"time":"2025-05-18T15:14:01.74990709+03:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-05-18T15:14:02.064316248+03:00","level":"INFO","msg":"stream: closing","id":"pnllv11j"}
+{"time":"2025-05-18T15:14:02.064341967+03:00","level":"INFO","msg":"handler: closed","stream_id":"pnllv11j"}
+{"time":"2025-05-18T15:14:02.064355677+03:00","level":"INFO","msg":"writer: Close: closed","stream_id":"pnllv11j"}
+{"time":"2025-05-18T15:14:02.064439784+03:00","level":"INFO","msg":"sender: closed","stream_id":"pnllv11j"}
+{"time":"2025-05-18T15:14:02.064450139+03:00","level":"INFO","msg":"stream: closed","id":"pnllv11j"}

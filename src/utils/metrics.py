@@ -2,6 +2,9 @@ import wandb
 import torch
 from sklearn.metrics import mean_squared_error
 import numpy as np
+from pypesq import pesq
+
+from pystoi import stoi
 from ..data.preprocessing import transform_audio
 
 
@@ -69,7 +72,7 @@ def perceptual_difference(original, compressed):
     return np.abs(original - compressed).mean()
 
 
-def calculate_metrics(original, compressed, config, embedding_loss, perplexity, loss, prefix=""):
+def calculate_metrics(original, compressed, sample_rate, config, embedding_loss, perplexity, loss, prefix=""):
     """Calculate various metrics between the original and compressed signals."""
     compressed = transform_audio(
         config["data"]["transform"]["min_max"], config["data"]["transform"]["softmax"]
@@ -78,12 +81,24 @@ def calculate_metrics(original, compressed, config, embedding_loss, perplexity, 
     mse = mean_squared_error_metric(original, compressed)
     psnr = peak_signal_to_noise_ratio(original, compressed)
     pd = perceptual_difference(original, compressed)
+    # PESQ (only 8kHz or 16kHz supported)
+    if original.shape[0] == 1:
+        original = original.squeeze()
+    if compressed.shape[0] == 1:
+        compressed = compressed.squeeze()
+    # print(f"Original: {original.shape}, Compressed: {compressed.shape}")
+    # pesq_score = pesq(original, compressed,sample_rate)
+
+    # STOI
+    stoi_score = stoi(original, compressed, sample_rate, extended=False)
 
     return {
         f"{prefix}SNR": snr,
         f"{prefix}MSE": mse,
         f"{prefix}PSNR": psnr,
         f"{prefix}PD": pd,
+        # f"{prefix}PESQ": pesq_score,
+        f"{prefix}STOI": stoi_score,
         f"{prefix}embedding_loss": embedding_loss,
         f"{prefix}perplexity": perplexity,
         f"{prefix}loss": loss,

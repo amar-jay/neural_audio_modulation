@@ -2,7 +2,6 @@ model:
   use_cuda: true
   compression_ratio: 0.5
   input_dim: 32
-  output_dim: 64
   num_layers: 4
   use_positional_encoding: true
   positional_multires: 50

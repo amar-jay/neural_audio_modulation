@@ -1,0 +1,48 @@
+Input dimension changed from 8 to 201 due to positional encoding.
+encoder_dims: [8, 4, 2], decoder_dims: [2, 4, 8]
+Vector quantization bottleneck dimension: 2
+Epoch 1: 0it [00:00, ?it/s]
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 100, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 68, in train_model
+    audio_output, embedding_loss, perplexity, _ = model(audio_input)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/models/model.py", line 75, in forward
+    x = self.positional_encoder(x.unsqueeze(-1))
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/models/encoding.py", line 45, in forward
+    embedded = torch.cat(embeddings, dim=-1)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.32 GiB. GPU 0 has a total capacity of 3.80 GiB of which 1.24 GiB is free. Including non-PyTorch memory, this process has 2.07 GiB memory in use. Of the allocated memory 1.98 GiB is allocated by PyTorch, and 16.52 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 100, in <module>
+    train_model(config)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/training/train.py", line 68, in train_model
+    audio_output, embedding_loss, perplexity, _ = model(audio_input)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/models/model.py", line 75, in forward
+    x = self.positional_encoder(x.unsqueeze(-1))
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/amarjay/.local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/amarjay/Desktop/code/neural_audio_modulation/neural_audio_modulation/src/models/encoding.py", line 45, in forward
+    embedded = torch.cat(embeddings, dim=-1)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.32 GiB. GPU 0 has a total capacity of 3.80 GiB of which 1.24 GiB is free. Including non-PyTorch memory, this process has 2.07 GiB memory in use. Of the allocated memory 1.98 GiB is allocated by PyTorch, and 16.52 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

@@ -71,8 +71,6 @@ def train_model(config):
             loss = model.loss(audio_output, audio_input, embedding_loss)
             loss.backward()
             optimizer.step()
-            # print(loss.item())
-            # wandb.log({"loss": loss.item()})
 
             # Evaluate model
             if (idx + 1) % config["training"]["eval_interval"] == 0:
