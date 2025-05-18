@@ -57,6 +57,12 @@ def load_model(model_path, config):
             print(f"Alternative loading also failed: {e2}")
             print("Warning: Using uninitialized model weights.")
 
+    print()
+    print(model)
+    print()
+    print(f"Number of parameters: {sum(p.numel() for p in model.parameters())}")
+    print(f"Model size: {model.storage_size()} MB")
+
     return model
 
 
