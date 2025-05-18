@@ -28,9 +28,7 @@ def train_model(config):
     # Initialize dataset and dataloader
     train_dataset = AudioDataset(config["data"]["dataset_path"])
     if config["data"]["transform"]:
-        train_dataset.transform = transform_audio(
-            config["data"]["transform"]["min_max"], config["data"]["transform"]["softmax"]
-        )
+        train_dataset.transform = transform_audio(**config["data"]["transform"])
 
     train_loader = DataLoader(
         train_dataset, batch_size=config["training"]["batch_size"], shuffle=True
@@ -86,7 +84,6 @@ def train_model(config):
                     wandb.log(metrics)
     logger.finish()
     save_model(model)
-
 
 
 if __name__ == "__main__":

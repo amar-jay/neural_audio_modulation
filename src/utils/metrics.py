@@ -72,11 +72,9 @@ def perceptual_difference(original, compressed):
     return np.abs(original - compressed).mean()
 
 
-def calculate_metrics(original, compressed, sample_rate, config, embedding_loss, perplexity, loss, prefix=""):
+def calculate_metrics(original, compressed, config, embedding_loss, perplexity, loss, prefix=""):
     """Calculate various metrics between the original and compressed signals."""
-    compressed = transform_audio(
-        config["data"]["transform"]["min_max"], config["data"]["transform"]["softmax"]
-    )(compressed)
+    sample_rate = config["data"]["transform"]["sample_rate"]
     snr = signal_to_noise_ratio(original, compressed)
     mse = mean_squared_error_metric(original, compressed)
     psnr = peak_signal_to_noise_ratio(original, compressed)

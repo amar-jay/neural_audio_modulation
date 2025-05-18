@@ -7,6 +7,26 @@ import tarfile
 import zipfile
 import shutil
 from tqdm import tqdm
+from pathlib import Path
+
+
+def flatten_librispeech_dataset(src_root: str, audio_ext=".flac"):
+    src_root = Path(src_root)
+    dest_root = os.path.join(src_root, "audio")
+    # make sure the destination directory exists
+    os.makedirs(dest_root, exist_ok=True)
+    src_root = Path(os.path.join(src_root, "dev-clean"))
+
+    # regex to match the audio files
+    for audio_path in src_root.rglob(f"*{audio_ext}"):
+        parts = audio_path.relative_to(src_root).with_suffix("").parts
+        if len(parts) < 3:
+            continue
+        speaker, chapter, utterance = parts[-3], parts[-2], parts[-1]
+        new_filename = f"{speaker}_{chapter}_{utterance}{audio_ext}"
+        dest_path = os.path.join(dest_root, new_filename)
+
+        shutil.copy(audio_path, dest_path)
 
 
 class DownloadProgressBar(tqdm):
@@ -52,6 +72,7 @@ def main():
             "url": "https://www.openslr.org/resources/12/dev-clean.tar.gz",
             "extract_path": os.path.join(args.output_dir, "LibriSpeech"),
             "final_path": os.path.join(args.output_dir, "librispeech"),
+            "preprocess": flatten_librispeech_dataset,
         },
         "gtzan": {
             "url": "https://oramics.github.io/sampled/MIDI/GTZAN/genres.zip",
@@ -96,6 +117,10 @@ def main():
     # Clean up downloaded archive
     os.remove(download_path)
 
+    # Preprocess dataset if needed
+    if "preprocess" in dataset:
+        print(f"Preprocessing {args.dataset} dataset...")
+        dataset["preprocess"](dataset["final_path"])
     print(f"Dataset installed at: {dataset['final_path']}")
 
     # Print basic usage example

@@ -14,7 +14,8 @@ training:
 
 data:
   dataset_path: "data/esc50/audio"
-  sample_rate: 22050
   transform:
+    sequence_length: 220500
+    sample_rate: 44100
     softmax: false
     min_max: true

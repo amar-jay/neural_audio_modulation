@@ -2,12 +2,14 @@ import os
 import numpy as np
 import torch
 import sounddevice as sd
-import torchaudio   
+import torchaudio
+
 
 def load_audio(file_path):
     """Load an audio file."""
     sample_rate, data = torchaudio.load(file_path)
     return sample_rate, data
+
 
 def play_audio(waveform, sample_rate):
     """Play audio from a waveform tensor."""
@@ -28,12 +30,14 @@ def play_audio(waveform, sample_rate):
     sd.play(waveform_np, sample_rate)
     sd.wait()
 
+
 def save_audio(file_path, data, sample_rate):
     """Save audio data to a file."""
     if not file_path.endswith(".wav"):
         file_path += ".wav"
     torchaudio.save(file_path, data, sample_rate)
     print(f"Audio saved to {file_path}")
+
 
 # save model, sequentially
 def save_model(model):
