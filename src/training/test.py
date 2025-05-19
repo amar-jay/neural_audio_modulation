@@ -92,6 +92,10 @@ def test_single_file(
     model.eval()
     with torch.no_grad():
         audio_output, embedding_loss, perplexity, embeds = model(audio_tensor)
+        print(f"Input shape: {audio_tensor.shape}")
+        print(f"Output shape: {audio_output.shape}")
+        print(f"Compressed Embedding shape: {embeds.shape}")
+        print(f"Compression ratio per number of parameters: {embeds.numel() / audio_tensor.numel()}")
 
         # Calculate metrics
         metrics = calculate_metrics(

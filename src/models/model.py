@@ -130,18 +130,26 @@ class NeuralAudioEncoding(nn.Module):
         return loss
 
     def encoded(self, x: torch.Tensor) -> torch.Tensor:
+        # Apply positional encoding if enabled
         if self.use_positional_encoding:
             x = self.positional_encoder(x.unsqueeze(-1))
 
         if hasattr(self, "proj_input"):
             x = self.proj_input(x)
+        # Store encoder outputs for skip connections
+        encoder_outputs = []
+
+        # Encoder forward pass
         for i, layer in enumerate(self.encoder_layers):
             x = layer(x)
+            encoder_outputs.append(x)
             x = self.layer_norms[i](x)
             x = self.activation(x)
             x = F.dropout(x, p=0.5, training=True)  # randomly zero out 50% of activations
 
-        return x
+        # Apply the vector quantization bottleneck
+        embedding_loss, x, perplexity, min_encodings, min_encoding_indices = self.bottleneck(x)
+        return x, embedding_loss, perplexity, min_encodings, min_encoding_indices
 
     def decoded(self, x: torch.Tensor, encoder_outputs=None) -> torch.Tensor:
         if encoder_outputs is None:
@@ -155,16 +163,19 @@ class NeuralAudioEncoding(nn.Module):
                     x = F.dropout(x, p=0.5, training=True)  # randomly zero out 50% of activations
         else:
             n = len(self.encoder_outputs)
-            # With provided skip connections
+            # Decoder forward pass with skip connections
             for i, layer in enumerate(self.decoder_layers):
-                skip_idx = self.num_layers - 1 - i
-                x = torch.cat([x, encoder_outputs[skip_idx]], dim=-1)
+                # Add skip connection - connect with corresponding encoder output
+                skip_idx = self.num_layers - 1 - i  # Index from the end
+                x = x + encoder_outputs[skip_idx]  # Skip connection
                 x = layer(x)
-                if i < self.num_layers - 1:
+                if i < self.num_layers - 1:  # No activation after final layer
                     x = self.layer_norms[n + i](x)
                     x = self.activation(x)
                     x = F.dropout(x, p=0.5, training=True)  # randomly zero out 50% of activations
         if hasattr(self, "proj_out"):
             x = self.proj_out(x)
 
-        return x
+        # remove the last dimension
+        return x.squeeze(-1)
+

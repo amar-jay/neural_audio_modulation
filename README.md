@@ -1,3 +1,4 @@
+# Naa I screwed this up, mixed the channel dimensions with the sequence lenghth. ITS WRONG. not what I claims to be.
 # Neural Audio Modulation Compression
 
 This project focuses on developing a neural network for audio compression with a specific emphasis on modulation techniques. The goal is to create an efficient model that can encode and decode audio signals while maintaining high quality.
