@@ -179,3 +179,8 @@ class NeuralAudioEncoding(nn.Module):
         # remove the last dimension
         return x.squeeze(-1)
 
+
+print(
+    "NeuralAudioEncoding model loaded. Use the 'encoded' method to get the encoded representation."
+)
+print(NeuralAudioEncoding)
